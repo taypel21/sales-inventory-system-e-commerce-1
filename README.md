@@ -42,4 +42,4 @@ git push -u origin develop
 * Do a pull request to the develop branch
 # Installation instructions for backend
 * Make sure you are in a virtual environment.
-- You can use the virtualenv package. If it's not installed on your local machine, install from your terminal, using
+  - You can use the virtualenv package. If it's not installed on your local machine, install from your terminal, using
