@@ -59,3 +59,20 @@ git push -u origin develop
   ```
   source <environment_name>/bin/activate
   ```
+* Navigate to the e_commerce_frontend_backend/e_commerce_frontend_backend folder
+* Install the packages in the requirements.txt file
+```
+pip install -r requirements.txt
+```
+* Once you're done, you can use pip freeze > requirements.txt to update the requirements.txt file if you installed new packages during your work. Otherwise, there's no need to pip freeze.
+* Exit the virtual environment with
+```
+deactivate
+```
+=============================
+# Steps to install virtualenv for for backend:
+* Browse to the calendar_backend folder.
+* Type pip install virtualenv to install virtualenv
+* Type virtualenv venv to create venv folder
+* Activate the venv by typing source venv/bin/activate if you are using linux or type venv/Scripts/activate.bat if you are using windows.
+* Install all dependencies on the requirements.txt by typing pip install -r requirements.txt to install all at once.
