@@ -72,7 +72,7 @@ deactivate
 =============================
 # Steps to install virtualenv for for backend:
 * Browse to the e_commerce_frontend_backend folder.
-* Type pip install virtualenv to install virtualenv
-* Type virtualenv venv to create venv folder
-* Activate the venv by typing source venv/bin/activate if you are using linux or type venv/Scripts/activate.bat if you are using windows.
-* Install all dependencies on the requirements.txt by typing "pip install -r requirements.txt" to install all at once.
+* Type `pip install virtualenv` to install virtualenv
+* Type `virtualenv venv` to create venv folder
+* Activate the venv by typing `source venv/bin/activate` if you are using linux or type `venv/Scripts/activate.bat` if you are using windows.
+* Install all dependencies on the requirements.txt by typing `pip install -r requirements.txt` to install all at once.
