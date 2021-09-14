@@ -57,5 +57,5 @@ git push -u origin develop
   ```
   for linux(Ubuntu)
   ```
-  <environment_name>\Scripts\activate
+  source <environment_name>/bin/activate
   ```
