@@ -43,3 +43,19 @@ git push -u origin develop
 # Installation instructions for backend
 * Make sure you are in a virtual environment.
   - You can use the `virtualenv` package. If it's not installed on your local machine, install from your terminal, using
+  ```
+  pip install virtualenv
+  ```
+  - Once you have `virtualenv` on your machine, create a virtual environment with a name you choose:
+  ```
+  virtualenv <environment_name>
+  ```
+  - Next, activate the environment:
+  For windows
+  ```
+  <environment_name>\Scripts\activate
+  ```
+  for linux(Ubuntu)
+  ```
+  <environment_name>\Scripts\activate
+  ```
