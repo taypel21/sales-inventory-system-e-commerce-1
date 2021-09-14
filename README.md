@@ -31,3 +31,15 @@ DO NOT ADD THE sales-inventory-system-e-commerce REPO AS YOUR REMOTE.
 git add *
 ```
 for all files. replace * with specific file names if you're only interested in those files.
+* Commit to the develop branch with a clear, descriptive message and issue number, e.g.
+```
+git commit -m "Fixed models and bugs for customers as per issue #2."
+```
+* Push to the develop branch of the remote repo:
+```
+git push -u origin develop
+```
+* Do a pull request to the develop branch
+# Installation instructions for backend
+* Make sure you are in a virtual environment.
+- You can use the virtualenv package. If it's not installed on your local machine, install from your terminal, using
