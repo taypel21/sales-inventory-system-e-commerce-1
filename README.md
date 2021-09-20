@@ -28,7 +28,7 @@ DO NOT ADD THE sales-inventory-system-e-commerce REPO AS YOUR REMOTE.
 * Do your work
 * Stage the changed files you'll like to upload:
 ```
-git add *
+git add .
 ```
 for all files. replace * with specific file names if you're only interested in those files.
 * Commit to the develop branch with a clear, descriptive message and issue number, e.g.
