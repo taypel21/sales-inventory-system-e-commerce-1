@@ -1,6 +1,3 @@
-![zuri calendar](https://user-images.githubusercontent.com/26323606/133960785-4ff1585f-0d07-4cfc-8190-c98a8045beda.png)
-![e-commerce2](https://user-images.githubusercontent.com/26323606/133960789-28745672-1a07-4184-ba8a-02b172f09f29.png)
-![e-commerce1](https://user-images.githubusercontent.com/26323606/133960791-99ea3253-be87-4a06-9848-9f89e0130d2f.png)
 # Sales-inventory-system-e-commerce
 This is an e-commerce website developed for phase III of the reskill american bootcamp.
 # Frontend
@@ -79,3 +76,7 @@ deactivate
 * Type `virtualenv venv` to create venv folder
 * Activate the venv by typing `source venv/bin/activate` if you are using linux or type `venv/Scripts/activate.bat` if you are using windows.
 * Install all dependencies on the requirements.txt by typing `pip install -r requirements.txt` to install all at once.
+
+# Project database er-diagram
+![e-commerce2](https://user-images.githubusercontent.com/26323606/133960789-28745672-1a07-4184-ba8a-02b172f09f29.png)
+![e-commerce1](https://user-images.githubusercontent.com/26323606/133960791-99ea3253-be87-4a06-9848-9f89e0130d2f.png)
