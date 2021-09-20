@@ -24,7 +24,7 @@ e.g
 git remote add origin https://github.com/aayobam/sales-inventory-system-e-commerce.git
 ```
 DO NOT ADD THE sales-inventory-system-e-commerce REPO AS YOUR REMOTE.
-* Navigate to the relevant folder (e_commerce_frontend_backend)
+* Navigate to the relevant folder (e_commerce)
 * Do your work
 * Stage the changed files you'll like to upload:
 ```
@@ -59,7 +59,7 @@ git push -u origin develop
   ```
   source <environment_name>/bin/activate
   ```
-* Navigate to the e_commerce_frontend_backend/e_commerce_frontend_backend folder
+* Navigate to the e_commerce/e_commerce folder
 * Install the packages in the requirements.txt file
 ```
 pip install -r requirements.txt
@@ -71,8 +71,12 @@ deactivate
 ```
 =============================
 # Steps to install virtualenv for for backend:
-* Browse to the e_commerce_frontend_backend folder.
+* Browse to the e_commerce folder.
 * Type `pip install virtualenv` to install virtualenv
 * Type `virtualenv venv` to create venv folder
 * Activate the venv by typing `source venv/bin/activate` if you are using linux or type `venv/Scripts/activate.bat` if you are using windows.
 * Install all dependencies on the requirements.txt by typing `pip install -r requirements.txt` to install all at once.
+
+# Project database er-diagram
+![e-commerce2](https://user-images.githubusercontent.com/26323606/133960789-28745672-1a07-4184-ba8a-02b172f09f29.png)
+![e-commerce1](https://user-images.githubusercontent.com/26323606/133960791-99ea3253-be87-4a06-9848-9f89e0130d2f.png)
