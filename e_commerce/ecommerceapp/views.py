@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
-# Create your views here.
+
+def project_test_views(request):
+    return HttpResponse("<h1>Welcome to sales inventory(e-commerce) landing page</h1>")

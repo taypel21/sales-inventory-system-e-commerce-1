@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
-# Create your views here.
+
+def user_account_views(request):
+    return HttpResponse("<h1>Welcome to user accounts</h1>")
