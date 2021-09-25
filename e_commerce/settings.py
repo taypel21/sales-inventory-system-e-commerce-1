@@ -1,7 +1,8 @@
 from pathlib import Path
 import os
 import environ
-import django_heroku, django_filters
+import django_heroku
+
 
 env = environ.Env()
 environ.Env.read_env()
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phone_field',
     'accounts',
     'ecommerceapp',
 ]
