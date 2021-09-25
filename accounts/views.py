@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import HttpResponse
 
 
-def user_account_views(request):
-    return HttpResponse("<h1>Welcome to user accounts</h1>")
+
+def user_registeration(request):
+      return HttpResponse("user registeration comes here")
