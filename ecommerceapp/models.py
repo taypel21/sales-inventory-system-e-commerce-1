@@ -16,9 +16,11 @@ class Customer(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="customer")
     address = models.CharField(max_length=250)
-    postal_code = models.CharField(max_length=20)
+    postal_code = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
     phone_no = PhoneField(blank=True, help_text="contact phone number")
+    profile_picture = models.ImageField(default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -57,7 +59,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="product")
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name="product")
     brand_name = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=200, unique=True)
@@ -65,8 +68,10 @@ class Product(models.Model):
     product_image = models.ImageField(default="defaul.png", upload_to="media")
     short_description = models.CharField(max_length=1000)
     description = models.TextField()
-    price = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
-    in_stock = models.IntegerField(default=0, blank=True, null=True, validators=[MinValueValidator(1)])
+    price = models.DecimalField(
+        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    in_stock = models.IntegerField(
+        default=0, blank=True, null=True, validators=[MinValueValidator(1)])
     available = models.BooleanField(default=True)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -81,9 +86,12 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="cart")
-    quantity = models.IntegerField(default=1, validators=[MinValueValidator(1)])
-    total_amount = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="cart")
+    quantity = models.IntegerField(
+        default=0, blank=True, null=True, validators=[MinValueValidator(1)])
+    total_amount = models.DecimalField(
+        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -120,10 +128,13 @@ class Order(models.Model):
         (3, "Delivered"),
     )
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="order")
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="order")
     price = models.DecimalField(decimal_places=2, max_digits=10)
-    quantity = models.BigIntegerField(default=1, validators=[MinValueValidator(1)])
-    total_amount = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    quantity = models.BigIntegerField(
+        default=1, validators=[MinValueValidator(1)])
+    total_amount = models.DecimalField(
+        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
     payment_status = models.BooleanField(default=True)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
@@ -131,7 +142,9 @@ class Order(models.Model):
     address = models.CharField(max_length=250)
     postal_code = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
-    delivery_status = models.CharField(choices=Delivert_Status, default="Pending", max_length=100)
+    state = models.CharField(max_length=100)
+    delivery_status = models.CharField(
+        choices=Delivert_Status, default="Pending", max_length=100)
     phone_no = PhoneField(blank=True, help_text="contact phone number")
 
     def __str__(self):
