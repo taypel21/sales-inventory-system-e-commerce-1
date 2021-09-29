@@ -1,14 +1,30 @@
-from django.shortcuts import HttpResponse, render
+import email
+from django.shortcuts import HttpResponse, render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from .models import *
+from django.contrib import messages
 
+def user_account(request):
+    return HttpResponse("<h1>Welcome to your user account!</h1>")
 
-
-def user_registeration(request):
-      template_name = "accounts/register.html"
-      context = {}
-      return render(request, template_name)
+def user_registration(request):
+    return render(request,'register.html') 
 
 
 def user_login(request):
-      template_name = "accounts/index.html"
-      context = {}
-      return render(request, template_name)
+    context = {}
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        # Authenticate user
+        user = authenticate(request, username=username,password=password)
+        # Verify user is valid
+        if user is not None:
+            account = Profile.objects.filter(user=user)
+            # login(request, account)
+            return redirect('user-account')
+        else:
+            return render(request,'login.html')
+    else:
+          return render(request,'login.html')

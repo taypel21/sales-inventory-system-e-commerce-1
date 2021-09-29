@@ -4,8 +4,6 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from phone_field import PhoneField
 
-
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="customer")
     address = models.CharField(max_length=250)
@@ -19,15 +17,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-@receiver(post_save, sender=User)
-def create_customer_profile(sender, instance, created, *args, **kwargs):
-    if created:
-        Profile.objects.get_or_create(user=instance)
-        print("Customer profile created successfully")
-
-@receiver(post_save, sender=User)
-def update_customer_profile(sender, instance, created, *args, **kwargs):
-    if created != True:
-        instance.profile.save()
-        print("Customer profile details for updated successfully")
