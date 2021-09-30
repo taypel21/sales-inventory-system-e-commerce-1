@@ -17,3 +17,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(instance, created, *args, **kwargs):
+#     if created:
+#         Profile.objects.get_or_create(user=instance)
+#         print("user profile created")
+
+# @receiver(post_save, sender=User)
+# def update_user_profile(instance, created, *args, **kwargs):
+#     if not created:
+#         instance.profile.save()
+#         print("user profile updated")
+
