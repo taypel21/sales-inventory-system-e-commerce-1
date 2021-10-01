@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from .views import *
 
+app_name = "accounts"
 
 urlpatterns = [
     path('register/', user_registration, name="user-registration"),
@@ -43,4 +44,6 @@ urlpatterns = [
         ),
         name='change_password'
     ),
+   path("user/",userpage, name="userpage"),
+   path("logout",logout_view,name="logout"),
 ]
