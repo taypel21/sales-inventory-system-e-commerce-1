@@ -1,5 +1,14 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
 
-def user_account_views(request):
-    return HttpResponse("<h1>Welcome to user accounts</h1>")
+
+def user_registration(request):
+    template_name = "accounts/register.html"
+    context = {}
+    return render(request, template_name)
+
+
+def user_login(request):
+    template_name = "accounts/login.html"
+    context = {}
+    return render(request, template_name)
