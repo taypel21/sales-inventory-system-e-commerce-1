@@ -7,31 +7,49 @@ User=get_user_model()
 
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(
-        widget=forms.TextInput(
-        attrs={
-        "class": "form-control",
-        "label":"username",
-        "placeholder": "Enter your username"
-    }))
-    password = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "class": "form-control",
-                "label":"password",
-                "id": "user-password",
-                "placeholder": "Enter password"
-            }
-        )
-    )
+# class LoginForm(forms.Form):
+#     username = forms.CharField(
+#         widget=forms.TextInput(
+#         attrs={
+#         "class": "form-control",
+#         "label":"username",
+#         "placeholder": "Enter your username"
+#     }))
+#     password = forms.CharField(
+#         widget=forms.PasswordInput(
+#             attrs={
+#                 "class": "form-control",
+#                 "label":"password",
+#                 "id": "user-password",
+#                 "placeholder": "Enter password"
+#             }
+#         )
+#     )
 
 
 class RegisterForm(forms.ModelForm):
     
     class Meta:
         model= User
-        fields= ('username', 'email', 'password', 'password2')
+        fields= ('first_name', 'last_name' ,'username', 'email', 'password', 'password2')
+
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+        attrs={
+        "class": "form-control",
+        "label":"firstname",
+        "placeholder": "Enter your first name"
+    }))
+
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+        attrs={
+        "class": "form-control",
+        "label":"last_name",
+        "placeholder": "Enter your last_name"
+    }))
+
+
 
 
     username = forms.CharField(

@@ -10,10 +10,10 @@
 
     <h1>Welcome to sales inventory(e-commerce) landing page</h1>
     {% if user.is_authenticated %}
-     <p>You are logged in as {{ request.user }}. Click here to <a href="">Log out</a></p>
+     <p>You are logged in as {{ request.user }}. Click here to <a href="{% url 'accounts:logout' %}">Log out</a></p>
     
     
-      <a href="{% url 'accounts:userpage'  %}">{{user.username|title}}</a>
+      <a href="">{{user.username|title}}</a>
     
     {% else %}
     
