@@ -1,11 +1,13 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth 
 from django.contrib import messages
 from .forms import UserForm
-#create user registration view
 
+
+
+
+#create user registration view
 def user_registration(request):
     template_name = "accounts/register.html"
     if request.method == 'POST':
@@ -16,7 +18,7 @@ def user_registration(request):
         password1=request.POST.get('password1')
         password2=request.POST.get('password2')
         try:
-            if password1 ==password2:
+            if password1 == password2:
                 if User.objects.filter(email=email).exists():
                     messages.error(request,'Email already exists')
                     return redirect("accounts:user-registration")
@@ -36,18 +38,16 @@ def user_registration(request):
             return redirect("accounts:user-registration")
             #return render(request,'accounts/register.html', {'error': 'Passwords do not match'})
     else:
-        return render(request,"accounts/register.html")
+        return render(request, template_name)
    
     
 #create user view login
-
 def user_login(request):
     template_name = "accounts/login.html"
-    context = {}
     if (request.method == 'POST'):
         username=request.POST.get('username') 
         password=request.POST.get('password') 
-        user= auth.authenticate(username=username,password=password)
+        user= auth.authenticate(username=username, password=password)
        
         if user is not None :
             auth.login(request,user)
@@ -55,31 +55,22 @@ def user_login(request):
             print('user logged')
             return redirect("test_project")  
         else:
-            messages.error(request,' Invalid username or password')
+            messages.error(request, f'Invalid username or password')
             return redirect("accounts:user-login")
             #return render(request,'accounts/login.html',{'error':'Username or password is incorrect!'})     
     
     else:
-       return render(request,'accounts/login.html',context={})  
+       return render(request, template_name, context={})  
             
 
-
 def logout (request):
-        auth.logout(request)
-        return redirect( "test_project")
-
-
-
-
+    auth.logout(request)
+    return redirect( "test_project")
 
 
 # User Profile Views
-
 def userpage(request):
     user_form= UserForm(instance=request.user)
-    #profile_form=ProfileForm(instance=request.user.profile)
-    return render(request=request, template_name="accounts/user.html", context={"user":request.user, "user_form":user_form})
-
-
-
-
+    template_name="accounts/user.html"
+    context={"user":request.user, "user_form":user_form}
+    return render(request, template_name, context)
