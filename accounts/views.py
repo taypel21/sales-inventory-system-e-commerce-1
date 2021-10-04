@@ -19,19 +19,22 @@ def user_registration(request):
             if password1 ==password2:
                 if User.objects.filter(email=email).exists():
                     messages.error(request,'Email already exists')
-                    return render (request,'accounts/register.html', {'error': 'Email is already taken!'})
+                    return redirect("accounts:user-registration")
+                    #return render(request,'accounts/register.html', {'error': 'Email is already taken!'})
                 elif User.objects.filter(username=username).exists():
                     messages.error(request,'Username already exists')
-                    return render (request,'accounts/register.html', {'error': 'Username is already exists!'})
+                    return redirect("accounts:user-registration")
+                    #return render (request,'accounts/register.html', {'error': 'Username is already exists!'})
                 else:    
                     user=User.objects.create_user(username=username,password=password1,email=email,first_name=first_name,last_name=last_name)
                     user.save()
                     print('User Account Created')
                     return redirect("accounts:user-login")
 
-        except User.check_password:
+        except User.DoesNotExist:
             messages.error(request,"Password don't match!")
-            return render(request,'accounts/register.html', {'error': 'Passwords do not match'})
+            return redirect("accounts:user-registration")
+            #return render(request,'accounts/register.html', {'error': 'Passwords do not match'})
     else:
         return render(request,"accounts/register.html")
    
@@ -48,10 +51,13 @@ def user_login(request):
        
         if user is not None :
             auth.login(request,user)
+            messages.info(request, f'you are logged in as {username}')
             print('user logged')
             return redirect("test_project")  
         else:
-            return render(request,'accounts/login.html',{'error':'Username or password is incorrect!'})     
+            messages.error(request,' Invalid username or password')
+            return redirect("accounts:user-login")
+            #return render(request,'accounts/login.html',{'error':'Username or password is incorrect!'})     
     
     else:
        return render(request,'accounts/login.html',context={})  
