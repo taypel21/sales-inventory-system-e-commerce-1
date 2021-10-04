@@ -4,11 +4,10 @@ from django.contrib.auth import views as auth_views
 from .views import *
 
 app_name = "accounts"
-#app_name= "ecommerceapp"
 
 urlpatterns = [
-    path('register/', user_registration, name="user-registration"),
-    path('login/', user_login, name="user-login"),
+    path('register/',user_registration, name="user-registration"),
+    path('login/',user_login, name="user-login"),
     path(
         'password-reset/',
         auth_views.PasswordResetView.as_view(
@@ -45,6 +44,7 @@ urlpatterns = [
         ),
         name='change_password'
     ),
-#    path("user/",userpage, name="userpage"),
+ path("user/",userpage, name="userpage"),
  path("logout/",logout,name="logout"),
+ 
 ]

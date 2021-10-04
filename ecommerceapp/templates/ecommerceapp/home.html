@@ -13,7 +13,7 @@
      <p>You are logged in as {{ request.user }}. Click here to <a href="{% url 'accounts:logout' %}">Log out</a></p>
     
     
-      <a href="">{{user.username|title}}</a>
+      <a href="{% url 'accounts:userpage' %}">{{user.username|title}}</a>
     
     {% else %}
     
