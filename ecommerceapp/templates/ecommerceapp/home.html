@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+  <h1>Welcome to sales inventory(e-commerce) landing page</h1>
+    {% if user.is_authenticated %}
+      <div class="">
+        <p>You are logged in as {{ request.user }}. Click here to <a href="{% url 'accounts:logout' %}">Log out</a></p>
+        <a href="{% url 'accounts:userpage' %}">{{user.username|title}}</a>
+      </div>
+    
+    {% else %}
+      <div class="">
+        <a  href="{% url 'accounts:user-login' %}">Login</a>
+        <a href="{% url 'accounts:user-registration' %}">Register</a>
+      </div>
+    {% endif %}
+{% endblock content %}
+ 
