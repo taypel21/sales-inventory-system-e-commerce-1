@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sales inventory system</title>
+  </head>
+  <body> 
+
+    <h1>Welcome to sales inventory(e-commerce) landing page</h1>
+    {% if user.is_authenticated %}
+     <p>You are logged in as {{ request.user }}. Click here to <a href="{% url 'accounts:logout' %}">Log out</a></p>
+    
+    
+      <a href="{% url 'accounts:userpage' %}">{{user.username|title}}</a>
+    
+    {% else %}
+    
+      <a  href="{% url 'accounts:user-login' %}">Login</a>
+    
+      <a href="{% url 'accounts:user-registration' %}">Register</a>
+    
+    {% endif %}
+      
+   
+  </body>
+</html>
+
+
+

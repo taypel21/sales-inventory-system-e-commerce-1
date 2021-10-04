@@ -3,5 +3,6 @@ from .views import project_test_views
 
 
 urlpatterns = [
-    path('', project_test_views, name="test_project")
+    path('', project_test_views, name="test_project"),
+    path('back/',project_test_views, name="test_project")
 ]
