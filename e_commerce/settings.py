@@ -20,7 +20,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://e-sales-inventory.herokuapp.com',
+                 '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -34,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phone_field',
     'accounts',
+    'cartapp',
     'ecommerceapp',
+    'paystack',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'e_commerce.urls'
 
@@ -60,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cartapp.context_processors.cart',
             ],
         },
     },
@@ -122,8 +128,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 LOGGING = {
@@ -157,5 +163,9 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
+
+# Paystack private and public keys. for testing alone
+PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY")
+PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY")
 
 django_heroku.settings(locals())
