@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load paystack %}
+
+
+...
+{% paystack_button amount=3000 email=request.user.email %}
