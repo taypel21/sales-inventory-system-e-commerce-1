@@ -132,8 +132,14 @@ border-bottom: solid 3px black;
 
 .drop-down li{
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 16px;
     color: white;
+}
+
+
+.drop-down li a{
+    color: white;
+    font-size: 16px;
 }
 
 .drop-down li:hover{
@@ -221,7 +227,7 @@ border-bottom: solid 3px black;
 /*SALE PRODUCTS*/
 
 .featured-cont{
-    background-image: url('/images/ghostsBackground.jpeg');
+    background-image: url('../images/ghostsBackground.jpeg');
     
     
 }
@@ -388,7 +394,7 @@ border-bottom: solid 3px black;
 .productadd-wrap .product-cont{
     width: 100%;
     height: 100%;
-    background-image: url("/images/fitbit.png");
+    background-image: url("../images/fitbit.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
