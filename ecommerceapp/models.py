@@ -27,17 +27,22 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="product")
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name="product")
     brand_name = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=200)
     model = models.CharField(max_length=250)
-    product_image = models.ImageField(default="defaul.png", upload_to="product image/")
+    product_image = models.ImageField(
+        default="defaul.png", upload_to="product image/")
     product_description = models.CharField(max_length=1000)
-    price = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
-    in_stock = models.IntegerField(default=0, blank=True, null=True, validators=[MinValueValidator(1)])
+    price = models.DecimalField(
+        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    in_stock = models.IntegerField(
+        default=0, blank=True, null=True, validators=[MinValueValidator(1)])
     available = models.BooleanField(default=True)
-    added_by = models.ForeignKey(User, on_delete=models.CASCADE, default="admin")
+    added_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, default="admin")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -50,7 +55,7 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("product_detail", kwargs={"slug": self.slug})
-    
+
 
 class OrderHistory(models.Model):
     Delivert_Status = (
@@ -59,10 +64,13 @@ class OrderHistory(models.Model):
         (3, "Delivered"),
     )
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="order")
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="order")
     price = models.DecimalField(decimal_places=2, max_digits=10)
-    quantity = models.BigIntegerField(default=1, validators=[MinValueValidator(1)])
-    total_amount = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    quantity = models.BigIntegerField(
+        default=1, validators=[MinValueValidator(1)])
+    total_amount = models.DecimalField(
+        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
     payment_status = models.BooleanField(default=True)
     paystack_order_id = models.CharField(max_length=250)
     first_name = models.CharField(max_length=150)
@@ -72,7 +80,8 @@ class OrderHistory(models.Model):
     postal_code = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    delivery_status = models.CharField(choices=Delivert_Status, default="Pending", max_length=100)
+    delivery_status = models.CharField(
+        choices=Delivert_Status, default="Pending", max_length=100)
     phone_no = PhoneField(blank=True, help_text="contact phone number")
 
     def __str__(self):

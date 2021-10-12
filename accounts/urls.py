@@ -6,8 +6,8 @@ from .views import *
 app_name = "accounts"
 
 urlpatterns = [
-    path('register/',user_registration, name="user-registration"),
-    path('login/',user_login, name="user-login"),
+    path('register/', user_registration, name="user-registration"),
+    path('login/', user_login, name="user-login"),
     path(
         'password-reset/',
         auth_views.PasswordResetView.as_view(
@@ -35,16 +35,16 @@ urlpatterns = [
             template_name='accounts/password_reset_complete.html'
         ),
         name='password_reset_complete'
-    ),    
+    ),
     path(
         'change-password/',
         auth_views.PasswordChangeView.as_view(
             template_name='accounts/change-password.html',
-            success_url = '/'
+            success_url='/'
         ),
         name='change_password'
     ),
- path("user/",userpage, name="userpage"),
- path("logout/",logout,name="logout"),
- 
+    path("user/", userpage, name="userpage"),
+    path("logout/", logout, name="logout"),
+
 ]

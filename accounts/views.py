@@ -30,12 +30,10 @@ def user_registration(request):
                     return redirect("accounts:user-registration")
 
                 else:
-                    user = User.objects.create_user(
-                        username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                    user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                     user.save()
                     Profile.objects.get_or_create(user=user)
-                    messages.success(
-                        request, f"account for {user.email} successfully created")
+                    messages.success(request, f"account for {user.email} successfully created")
 
                     # initialize static data for mail notification
                     message_body = f"<h1>Hello {user.email}, your registration on bayshop is successful</h1>",
@@ -43,8 +41,7 @@ def user_registration(request):
                     sender_email = DEFAULT_FROM_EMAIL
                     recipient_email = user.email
 
-                    send_notification = MailNotificationForRegisteration(
-                        recipient_email, sender_email, mail_subject, message_body)
+                    send_notification = MailNotificationForRegisteration(recipient_email, sender_email, mail_subject, message_body)
 
                     # send mail to user after registeration
                     send_notification.mail_new_customer()
