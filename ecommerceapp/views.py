@@ -18,7 +18,6 @@ def product_list(request):
     return render(request, template_name, context)
 
 
-@login_required(login_url="accounts:user-login", redirect_field_name="next")
 def product_detail(request, slug):
     template_name = "ecommerceapp/product_detail.html"
     product = get_object_or_404(Product, slug=slug)
