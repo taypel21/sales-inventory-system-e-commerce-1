@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 import environ
 import django_heroku
+import whitenoise
 
 
 env = environ.Env()
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
@@ -168,5 +170,8 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 # Paystack private and public keys. for testing alone
 PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY")
 PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY")
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
