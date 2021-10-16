@@ -8,7 +8,9 @@ urlpatterns = [
     path('register/', user_registration, name="user-registration"),
     path('login/', user_login, name="user-login"),
     path("user/", userpage, name="userpage"),
-    path("logout/", logout, name="user-logout"),
+    path("logout/", logout, name="logout"),
+    path("user/", userpage, name="userpage"),
+    path('profile/updateprofile/', updateprofile, name="user_profile"),
 
 
     # Password Reset
@@ -44,11 +46,4 @@ urlpatterns = [
         ),
         name='password_reset_complete'
     ),
-<<<<<<< HEAD
-
-=======
-    path("user/", userpage, name="userpage"),
-    path("logout/", logout, name="logout"),
-    path('profile/updateprofile/',updateprofile, name="user_profile"),
->>>>>>> 7ad9b67068a6254cef4f64f581b0746c9d5d7900
 ]

@@ -39,8 +39,7 @@
 
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                           <li>
-                                                <a class="dropdown-item" href="{% url 'product_list' %}">All
-                                                      Products</a>
+                                                <a class="dropdown-item" href="{% url 'product_list' %}">AllProducts</a>
                                           </li>
                                           {% for category in categories %}
                                           <li>
@@ -52,27 +51,25 @@
                               </li>
                         </ul>
 
-<<<<<<< HEAD
-                        <!-- search bar-->
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                               <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                          <form action="{% url 'search_item' %}" method="GET">
+                                    <li class="nav-item dropdown">
+                                          <form action="{% url 'search_item' %}" method="get">
                                                 {% csrf_token %}
-                                                <input type="text" name="search" placeholder="search item"
-                                                      class="form-control me-2" arial-label="search" />
+                                                <input type="text" name="search" placeholder="search item" class="form-control">
                                           </form>
                                     </li>
                               </ul>
                         </div>
-                        {% if request.user.is_authenticated %}
+
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                              {% if request.user.is_authenticated %}
                               <ul class="navbar-nav">
                                     <div class="mt-2">
-                                      <p>Welcome, {{request.user.first_name}}</p>
+                                          <p>Welcome, {{request.user.first_name}}</p>
                                     </div>
                                     <li class="nav-item">
-                                          <a class="nav-link" href="{% url 'accounts:user-logout' %}">Logout</a>
+                                          <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
                                     </li>
 
                                     <li class="nav-item dropdown">
@@ -81,16 +78,16 @@
                                                 Settings
                                           </a>
                                           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                                <li><a class="dropdown-item"
+                                                            href="{% url 'accounts:userpage' %}">Profile</a></li>
                                                 <li><a class="dropdown-item" href="#">Order History</a></li>
                                                 <li><a class="dropdown-item" href="#">Other settings</a></li>
                                           </ul>
                                     </li>
                               </ul>
-                        </div>
-                        {% else %}
-                         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                              {% else %}
                               <ul class="navbar-nav">
+
                                     <li class="nav-item">
                                           <a class="nav-link" href="{% url 'accounts:user-login' %}">Login</a>
                                     </li>
@@ -99,55 +96,17 @@
                                           <a class="nav-link" href="{% url 'accounts:user-registration' %}">Register</a>
                                     </li>
                               </ul>
-                        </div>
-                        {% endif %}
-=======
-                       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                               <ul class="navbar-nav">
-
-                              <li class="nav-item">
-                                    {% if user.is_authenticated %}
-                                                <p>Welcome {{ request.user }}, <a href="{% url 'accounts:logout' %}">Log out</a></p>  
-                                                
-                                     </li>     
-                                    
-                                    
-                                    {% else %}
-
-                                    <li class="nav-item">
-                                          <a class="nav-link" href="{% url 'accounts:user-login' %}">Login</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                          <a class="nav-link" href="{% url 'accounts:user-registration' %}">Register</a>
-                                    </li>
                               {% endif %}
-
-
-                             
-
-                              <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                          Settings
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                          <li><a class="dropdown-item" href="{% url 'accounts:userpage' %}">Profile</a></li>
-                                          <li><a class="dropdown-item" href="#">Order History</a></li>
-                                          <li><a class="dropdown-item" href="#">Other settings</a></li>
-                                    </ul>
-                              </li>
-                        </ul>
-                       </div>
->>>>>>> 7ad9b67068a6254cef4f64f581b0746c9d5d7900
+                        </div>
                   </div>
             </div>
       </nav>
       {% if messages %}
-            {% for message in messages %}
-                  <div class="alert alert-{{message.tags}}">
-                        <p>{{message}}</p>
-                  </div>
-            {% endfor %}
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">
+            <p>{{message}}</p>
+      </div>
+      {% endfor %}
       {% endif %}
       {% block content %}{% endblock content %}
 
@@ -157,15 +116,16 @@
                   <p class="m-0 text-center text-dark">Copyright &copy; Bayshops 2021</p>
             </div>
       </footer>
-      
+
       <!-- Bootstrap core JS-->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-      
+
       <!-- Core theme JS-->
       <script src="{% static '/js/scripts.js' %}"></script>
 
       <!--j query-->
-      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
       <script src="{% static '/js/jquery.js' %}"></script>
 </body>
 

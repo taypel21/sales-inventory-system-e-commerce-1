@@ -16,13 +16,8 @@
     <div class="login-form">
         {% include 'accounts/messages.html' %}
         <form action="{% url 'accounts:user-login' %}" method="post">
-<<<<<<< HEAD
-            <h2 class="header-text">Login</h2> 
-            {% csrf_token %}      
-=======
             {% csrf_token %}
             <h2 class="header-text">Login</h2>       
->>>>>>> 7ad9b67068a6254cef4f64f581b0746c9d5d7900
             <div class="loginput-cont">
                 <input type="text" class="log-input" name="username" placeholder="Username" required="required">
             </div>
