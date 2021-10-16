@@ -2,9 +2,8 @@ from pathlib import Path
 import os
 import environ
 import django_heroku
-import whitenoise
-import cloudinary
-import cloudinary.uploader
+#import cloudinary
+#import cloudinary.uploader
 import cloudinary.api
 
 
