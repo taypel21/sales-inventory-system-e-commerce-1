@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, HttpResponse
 
 
-def unauthenticated_user(view_func):
+def authenticated_user(view_func):
     """
     This decorator makes sure no logged in user should be able 
     to access the registeration form or login form after been logged in.

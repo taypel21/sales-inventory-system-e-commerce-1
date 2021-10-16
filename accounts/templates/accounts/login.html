@@ -15,13 +15,17 @@
 <div class="login-wrap">
     <div class="login-form">
         <form action="{% url 'accounts:user-login' %}" method="post">
-            <h2 class="header-text">Login</h2>       
+            <h2 class="header-text">Login</h2> 
+            {% csrf_token %}      
             <div class="loginput-cont">
                 <input type="text" class="log-input" name="username" placeholder="Username" required="required">
             </div>
             <div class="loginput-cont">
                  <input type="password" class="log-input" name="password" placeholder="Password" required="required">
             </div>
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
             <div class="log-in-btn">
                 <button type="submit" class="btn">Login</button>
             </div>
