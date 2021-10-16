@@ -1,6 +1,6 @@
 from .cart import Cart
 
 
-
 def cart(request):
-      return {"cart": Cart(request)}
+    context = {"cart": Cart(request)}
+    return context
