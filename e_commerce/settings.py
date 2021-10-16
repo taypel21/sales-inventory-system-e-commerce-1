@@ -3,9 +3,12 @@ import os
 import environ
 import django_heroku
 import whitenoise
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
-env = environ.Env()
+env=environ.Env()
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,13 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY=env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://e-sales-inventory.herokuapp.com',
-                 '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['http://bayshops.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -34,12 +36,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # cloudinary apps
+    'cloudinary',
+    'cloudinary_storage',
+
+    # phone field package
     'phone_field',
+
+    # project apps
     'accounts',
     'cartapp',
     'ecommerceapp',
+
     'paystack',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,8 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
@@ -132,7 +145,17 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+# cloudinary configuration for image uploads
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+cloudinary.config(
+    cloud_name="dvltzgw6j",
+    api_key="863195764846662",
+    api_secret="CPyvhwU680PAqOT_1CZgEqyJgGQ"
+)
 
 
 LOGGING = {
@@ -153,10 +176,13 @@ LOGGING = {
         },
     },
 }
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 EMAIL_BACKEND = env("EMAIL_BACKEND")
 EMAIL_HOST = env("EMAIL_HOST")
@@ -171,7 +197,5 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY")
 PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY")
 
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())

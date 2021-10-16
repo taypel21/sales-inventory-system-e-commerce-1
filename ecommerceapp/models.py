@@ -1,11 +1,10 @@
-from datetime import timezone
 from django.core.validators import *
 from django.db import models
 from django.contrib.auth.models import User
 from phone_field import PhoneField
 from django.urls import reverse
 from django.core.validators import MinValueValidator
-from django.dispatch import receiver
+
 
 
 class Category(models.Model):
@@ -27,24 +26,19 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name="product")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="product")
     brand_name = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=200)
     model = models.CharField(max_length=250)
-    product_image = models.ImageField(
-        default="defaul.png", upload_to="product image/")
+    product_image = models.ImageField(default="default.png", upload_to="product image/")
     product_description = models.CharField(max_length=1000)
-    price = models.DecimalField(
-        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
-    in_stock = models.IntegerField(
-        default=0, blank=True, null=True, validators=[MinValueValidator(1)])
+    price = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    in_stock = models.IntegerField(default=0, blank=True, null=True, validators=[MinValueValidator(1)])
     available = models.BooleanField(default=True)
-    added_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, default="admin")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE, default=True)
 
     class Meta:
         ordering = ("name",)

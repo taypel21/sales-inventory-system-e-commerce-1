@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %} Cart Summary {% endblock head_title %}
+
+
+
+
+{% block content %}
+     <main class ="">
+            <h1 class="d-flex text-centre">Cart Page</h1>
+            <div class="">
+                  <img src=" {{ product.product_image.url }}" alt="product image" srcset="">
+                  <p>{{ product.name }}</p>
+                  <p>{{ product.price }}</p>
+            </div>
+     </main>
+{% endblock content %}
+

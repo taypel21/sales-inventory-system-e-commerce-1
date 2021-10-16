@@ -1,6 +1,9 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.generic.base import TemplateView
 from .models import *
+from django.db.models import Q
+from django.views.generic import ListView
 
 
 def categories(request):
@@ -29,3 +32,19 @@ def category_list(request, slug):
     template_name = "ecommerceapp/list_by_category.html"
     context = {"category": category, "products": products}
     return render(request, template_name, context)
+
+
+class SearcItem(ListView):
+    template_name = "ecommerceapp/product_list.html"
+    model = Product
+    context_object_name = "products"
+
+    def get_queryset(self):
+        query = self.request.GET.get("search")
+        if query:
+            products = Product.objects.filter(
+                Q(name__icontains=query, available=True) | Q(brand_name__icontains=query, available=True) |
+                Q(category__name__icontains=query, available=True)
+            )
+            return products
+        return HttpResponse("product not found")

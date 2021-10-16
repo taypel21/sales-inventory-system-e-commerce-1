@@ -9,7 +9,7 @@ from .views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('cart/', include('cartapp.urls')),
+    path('', include('cartapp.urls')),
     path('', include('ecommerceapp.urls')),
 ]
 
