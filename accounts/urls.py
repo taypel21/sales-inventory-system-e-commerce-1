@@ -41,5 +41,5 @@ urlpatterns = [
     ),
     path("user/", userpage, name="userpage"),
     path("logout/", logout, name="logout"),
-
+    path('profile/updateprofile/',updateprofile, name="user_profile"),
 ]
