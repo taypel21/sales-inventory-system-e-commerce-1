@@ -9,8 +9,8 @@ class Profile(models.Model):
     postal_code = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    phone_no = PhoneField(blank=True, help_text="contact phone number")
-    profile_picture = models.ImageField(default="default.jpg")
+    phone_no = PhoneField(blank=True)
+    profile_picture = models.ImageField(upload_to="static/media/images",default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

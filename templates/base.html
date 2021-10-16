@@ -52,6 +52,7 @@
                               </li>
                         </ul>
 
+<<<<<<< HEAD
                         <!-- search bar-->
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                               <ul class="navbar-nav">
@@ -100,6 +101,44 @@
                               </ul>
                         </div>
                         {% endif %}
+=======
+                       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                               <ul class="navbar-nav">
+
+                              <li class="nav-item">
+                                    {% if user.is_authenticated %}
+                                                <p>Welcome {{ request.user }}, <a href="{% url 'accounts:logout' %}">Log out</a></p>  
+                                                
+                                     </li>     
+                                    
+                                    
+                                    {% else %}
+
+                                    <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'accounts:user-login' %}">Login</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'accounts:user-registration' %}">Register</a>
+                                    </li>
+                              {% endif %}
+
+
+                             
+
+                              <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Settings
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                          <li><a class="dropdown-item" href="{% url 'accounts:userpage' %}">Profile</a></li>
+                                          <li><a class="dropdown-item" href="#">Order History</a></li>
+                                          <li><a class="dropdown-item" href="#">Other settings</a></li>
+                                    </ul>
+                              </li>
+                        </ul>
+                       </div>
+>>>>>>> 7ad9b67068a6254cef4f64f581b0746c9d5d7900
                   </div>
             </div>
       </nav>

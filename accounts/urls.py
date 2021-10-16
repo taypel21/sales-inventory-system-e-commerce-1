@@ -44,5 +44,11 @@ urlpatterns = [
         ),
         name='password_reset_complete'
     ),
+<<<<<<< HEAD
 
+=======
+    path("user/", userpage, name="userpage"),
+    path("logout/", logout, name="logout"),
+    path('profile/updateprofile/',updateprofile, name="user_profile"),
+>>>>>>> 7ad9b67068a6254cef4f64f581b0746c9d5d7900
 ]
