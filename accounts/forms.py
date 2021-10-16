@@ -14,4 +14,4 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
-        fields=('user','address','city','state', 'phone_no')
+        fields=('address','city','state', 'phone_no')

@@ -21,6 +21,7 @@
 <div class="registration-form">
     <form action="{% url 'accounts:user-registration' %}" method="post">
         {% csrf_token %}
+        {% include 'accounts/messages.html' %}
         <h2>Registration</h2>
         <p class="text"><span>Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
@@ -47,7 +48,7 @@
         </div>   
 
         <div class="form-group">
-            <input type="confirmed password" class="form-control" name="password2" placeholder="Confirm Password" required="required"><br>
+            <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required="required"><br>
         </div>
 
         <div>
@@ -55,9 +56,12 @@
                 <label class="pull-left checkbox-inline"><input type="checkbox"required="required">I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label><br><br>
             </div> 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Register Now</button><br>  
+                <button type="submit" value="register" class="btn btn-primary btn-block">Register Now</button><br>  
             <div>  
         </div>   
+
+        
+       
     </form>
     <p class="text-center">Already have an account? <a href="{% url 'accounts:user-login' %}"> Sign in</a></p>
 </div>

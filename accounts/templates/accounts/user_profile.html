@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +6,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>User Profile</title>
-<link rel="stylesheet" href="{% static './css/style.css' %}">
-<head>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 <body>
 	<header>
         <nav>
             <div class="logo">
-               <a href="#"><img src="../images/ghost.png" alt="Company logo of a ghost"></a> 
+               <a href="#"><img src="{% static 'media/images/ghost.png' %}" alt="Company logo of a ghost"></a> 
             </div>
-            <ul class="nav-products">
+			
+            <!-- <ul class="nav-products"> 
                 <li><a href="../html/Electronics.html">Electronics</a></li>
                 <li><a href="">Athletic Apparel</a></li>
                 <li><a href="">Bycicles</a></li>
@@ -25,62 +27,72 @@
                     <li>Settings</li>
                     <li>Other</li>
                 </div>
-            </ul>
-            <button class="log-in btn"><a href="../html/log-in.html">Log in</a></button>
-            <button class="log-in btn"><a href="../html/register.html">Register</a></button>
+            </ul>  -->
+            <!-- <button class="log-in btn"><a href="../html/log-in.html">Login</a></button> -->
+            <!-- <button class="log-in btn"><a href="../html/register.html">Register</a></button> -->
         </nav>
 	</header>
 	<div class="form-wrap">
-		<form action="">
-			<div class="form-control">
+		<div class="profile -Updateform">
+		<form action="{% url 'accounts:user_profile' %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+        	
+        	<h2>Profile Update Form</h2>
+			 <div class="form-control">
 				<div class="first-column">
 					<div class="profile-img">
-						<img src="../images/pic133.jpg" alt="" class="avatar rounded" width="150"> 
+						<img src="{% static 'media/images/pic133.jpg' %}" alt="" class="avatar rounded" width="150"> 
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">First Name</label>
-						<input type="first name"  id="exampleFormControlInput1" placeholder="">
+						{{u_form}}
+						
+						<!-- <label for="firstname" class="form-label">First Name</label> -->
+						<!-- <input type="first name" name="firstname" id="exampleFormControlInput1" placeholder="firstname"> -->
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Last Name</label>
-						<input type="last name"  id="exampleFormControlInput1" placeholder="">
+						<!-- <label for="LastName" class="form-label">Last Name</label> -->
+						<!-- <input type="last name" name="lastname"  id="exampleFormControlInput1" placeholder="Lastname"> -->
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">User Name</label>
-						<input type="user name"  id="exampleFormControlInput1" placeholder="">
+						<!-- <label for="exampleFormControlInput1" class="form-label">User Name</label> -->
+						<!-- <input type="user name" name="username" id="exampleFormControlInput1" placeholder="username"> -->
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Email</label>
-						<input type="email"  id="exampleFormControlInput1" placeholder="">
+						<!-- <label for="exampleFormControlInput1" class="form-label">Email</label> -->
+						<!-- <input type="email" name="email" id="exampleFormControlInput1" placeholder="email"> -->
 					</div>
 				</div>	
 				<div class="second-column"> 
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Address</label>
-						<input type="address"  id="exampleFormControlInput1" placeholder="">
+						{{p_form}}		
+						  	<!-- <label for="exampleFormControlInput1" class="form-label">Address</label> 
+							<input type="address"  name="address" id="exampleFormControlInput1" placeholder="address">  -->
 					</div>
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">City/State</label>
-						<input type="city/town"  id="exampleFormControlInput1" placeholder="">
+					<!--<div class="input">
+						<label for="exampleFormControlInput1" class="form-label">City/State</label> 
+						 <input type="city" name="city" id="exampleFormControlInput1" placeholder="city"> 
 					</div> 
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Country</label>
-						<input type="country"  id="exampleFormControlInput1" placeholder="">
+						<label for="exampleFormControlInput1" class="form-label">Country</label> 
+						<input type="country" name="country" id="exampleFormControlInput1" placeholder="country"> 
 					</div>
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Zipcode</label>
-						<input type="Zipcode"  id="exampleFormControlInput1" placeholder="">
+						<label for="exampleFormControlInput1" class="form-label">Zipcode</label> 
+						<input type="Zipcode"  name="zipcode" id="exampleFormControlInput1" placeholder="zipcode"> 
 					</div>
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-						<input type="phone number"  id="exampleFormControlInput1" placeholder="">
-					</div>
-					<div class="btn-cont">
-						<button class="profile-btn" type="button">SAVE PROFILE</button>
-					</div>
+						<label for="exampleFormControlInput1" class="form-label">Phone Number</label> 
+						<input type="phone number" name="phone number" id="exampleFormControlInput1" placeholder="phone number"> 
+					</div>  -->
+					 
+				</div>
+				<div class="btn-cont">
+					<button class="profile-btn" type="submit" name="save">SAVE PROFILE</button>
 				</div>
 			</div>
+			{% include 'accounts/messages.html' %}
 		</form>
+	</div>
 	</div>
 	
 </body>
