@@ -117,6 +117,9 @@ def updateprofile(request):
         p_form = ProfileForm(instance=request.user)
         u_form = UserForm(instance=request.user)
 
-    context={'p_form': p_form, 'u_form': u_form}
-    return render(request, 'accounts/user_profile.html',context )
+    context={
+        'p_form': p_form, 
+        'u_form': u_form
+    }
+    return render(request, template_name, context )
 

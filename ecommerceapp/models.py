@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from phone_field import PhoneField
 from django.urls import reverse
 from django.core.validators import MinValueValidator
+from cloudinary.models import CloudinaryField
 
 
 
@@ -31,7 +32,8 @@ class Product(models.Model):
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=200)
     model = models.CharField(max_length=250)
-    product_image = models.ImageField(default="default.png", upload_to="product image/")
+    product_image = models.ImageField(default="default.png", upload_to="product_image/")
+    # product_image = CloudinaryField("profile_image")
     product_description = models.CharField(max_length=1000)
     price = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
     in_stock = models.IntegerField(default=0, blank=True, null=True, validators=[MinValueValidator(1)])
@@ -58,13 +60,10 @@ class OrderHistory(models.Model):
         (3, "Delivered"),
     )
 
-    product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name="order")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="order")
     price = models.DecimalField(decimal_places=2, max_digits=10)
-    quantity = models.BigIntegerField(
-        default=1, validators=[MinValueValidator(1)])
-    total_amount = models.DecimalField(
-        decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    quantity = models.BigIntegerField(default=1, validators=[MinValueValidator(1)])
+    total_amount = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
     payment_status = models.BooleanField(default=True)
     paystack_order_id = models.CharField(max_length=250)
     first_name = models.CharField(max_length=150)

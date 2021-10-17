@@ -49,9 +49,11 @@
 </div>
 
 <div>
+    
     <script>
         $(document).on('click', '#add-product', function(e){
             e.preventDefault()
+            //console.log($('#add-product').val())
             $.ajax({
                 type:'POST',
                 url: '{% url "add_to_cart" %}',
@@ -61,13 +63,14 @@
                     action : 'post',
                 },
                 success: function(json){
-                    
+                    console.log(json)
                 },
-                error: function(xhr, errmsg, err){
-
+                error: function(response){
+                    console.log(response)
                 },
             });
-        })
+        }) 
     </script>
+    
 </div>
 {% endblock %}
