@@ -44,6 +44,7 @@
 						<img src="{% static '/media/images/pic133.jpg' %}" alt="" class="avatar rounded" width="150"> 
 					</div>
 					<div class="input">
+						{% csrf_token %}
 						{{u_form}}
 						
 						<!-- <label for="firstname" class="form-label">First Name</label> -->
@@ -64,6 +65,7 @@
 				</div>	
 				<div class="second-column"> 
 					<div class="input">
+					{% csrf_token %}
 						{{p_form}}		
 						  	<!-- <label for="exampleFormControlInput1" class="form-label">Address</label> 
 							<input type="address"  name="address" id="exampleFormControlInput1" placeholder="address">  -->
