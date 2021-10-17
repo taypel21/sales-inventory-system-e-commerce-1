@@ -2,12 +2,12 @@ from pathlib import Path
 import os
 import environ
 import django_heroku
-#import cloudinary
-#import cloudinary.uploader
+import cloudinary
 import cloudinary.api
+import cloudinary.uploader
 
 
-env=environ.Env()
+env = environ.Env()
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,12 +18,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY=env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['http://bayshops.herokuapp.com', '127.0.0.1', 'localhost']
+if DEBUG == False:
+    ALLOWED_HOSTS = ['http://bayshops.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # cloudinary apps
+    # cloudinary pacckage app
     'cloudinary',
     'cloudinary_storage',
 
@@ -147,16 +147,23 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
+# cloudinary config
+# if ALLOWED_HOSTS == False:
+CLOUDINARY_STORAGE = {
+    # cloud_name=env("cloud_name"),
+    # api_key=env("api_key"),
+    # api_secret=env("api_secrete"),
+    "CLOUD_NAME":"dvltzgw6j",
+    "API_KEY":"863195764846662",
+    "API_SECRET":"CPyvhwU680PAqOT_1CZgEqyJgGQ",
+}
+
 # cloudinary configuration for image uploads
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-cloudinary.config(
-    cloud_name="dvltzgw6j",
-    api_key="863195764846662",
-    api_secret="CPyvhwU680PAqOT_1CZgEqyJgGQ"
-)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
+
+# django error logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
