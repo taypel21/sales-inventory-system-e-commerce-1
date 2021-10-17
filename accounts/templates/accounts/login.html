@@ -14,7 +14,6 @@
 <body>
 <div class="login-wrap">
     <div class="login-form">
-        {% include 'accounts/messages.html' %}
         <form action="{% url 'accounts:user-login' %}" method="post">
             {% csrf_token %}
             <h2 class="header-text">Login</h2>       

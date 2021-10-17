@@ -9,7 +9,6 @@ urlpatterns = [
     path('login/', user_login, name="user-login"),
     path("user/", userpage, name="userpage"),
     path("logout/", logout, name="logout"),
-    path("user/", userpage, name="userpage"),
     path('profile/updateprofile/', updateprofile, name="user_profile"),
 
 
